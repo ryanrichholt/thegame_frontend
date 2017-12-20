@@ -17,8 +17,13 @@ class Home extends Component {
       <Container fluid>
         <Row>
           <Col size="md-12">
+          <div class="video-background">
+          <div class="video-foreground">
+            <iframe src="https://www.youtube.com/embed/W0LHTWG-UmQ?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen></iframe>
+          </div>
+          </div>
             <Jumbotron>
-              <h1>Homepage</h1>
+              <h1>Welcome to The Game App</h1>
             </Jumbotron>
 
           </Col>
