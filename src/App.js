@@ -4,7 +4,7 @@ import Home from './pages/Home/home'
 import Leaderboard from './pages/Leaderboard/leaderboard'
 import Profile from './pages/Profile/profile'
 //import NoMatch from './pages/NoMatch/nomatch'
-import './App.css';
+//import './App.css';
 import Nav from "./components/Nav";
 
 const App = () =>
