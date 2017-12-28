@@ -1,4 +1,5 @@
 import React from "react";
+import ProfileBox from "../UserAuth/ProfileBox"
 
 const Nav = () =>
   <nav className="navbar navbar-inverse navbar-top">
@@ -9,15 +10,14 @@ const Nav = () =>
           <span className="icon-bar" /> <span className="icon-bar" />
           <span className="icon-bar" />
         </button>
-        <a href="/" className="navbar-brand">
-          Home
-        </a>
-        <a href="/leaderboard" className="navbar-brand">
-          Leaderboard
-        </a>
-        <a href="/profile" className="navbar-brand">
-          Profile
-        </a>
+        <ul className="nav navbar-nav">
+          <li><a href="/" className="navbar-brand">Home</a></li>
+          <li><a href="/leaderboard" className="navbar-brand">Leaderboard</a></li>
+          <li><a href="/profile" className="navbar-brand">Profile</a></li>
+        </ul>
+        <ul className="nav navbar-nav navbar-right">
+          <ProfileBox/>
+        </ul>
       </div>
     </div>
   </nav>;

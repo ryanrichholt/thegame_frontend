@@ -10,47 +10,41 @@ import Panel from "../../components/ProfPanel";
 import './profile.css';
 
 class Profile extends Component {
-  state = {
-    name: [],
-    email: "",
-    score: "",
-  };
+    state = {
+      banana: 'pajama',
+      user: null
+    };
 
-  componentDidMount() {
-    this.loadUsers();
-  }
+    componentDidMount() {
+        this.getProfile();
+    }
 
-  loadUsers = () => {
-    API.getUsers()
-      .then(res =>
-        this.setState({ users: res.data, name: "", email: "", score: "" })
-      )
-      .catch(err => console.log(err));
-  };
+    getProfile() {
+        API.getProfile()
+        .then( response => {
+            if (response.data.success){
+                this.setState({ user: response.data.user })
+            } else {
+                this.setState({ user: null })
+            }
+          })
+          .catch( error => {
+              console.log('Error getting profile: ', error)
+          })
+    }
 
-  render() {
-    return (
-      
-      
-      <Container fluid>
-      <div className="video-background">
-      <div className="video-foreground">
-        <iframe src="https://www.youtube.com/embed/y2RVEK8XkFk?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=y2RVEK8XkFk" frameBorder="0" allowFullScreen></iframe>
-       
-        </div>
-      </div>
-        <Row>
-          <Col size="md-12">
-          <h1>Profile</h1>
-          </Col>
-        </Row>
-        <Panel />
-        
-        
-      </Container>
-      
-    );
-  }
+    render() { 
+      const user = this.state.user
+      if (user) {
+        return (
+          <div>Profile for { user.email }</div>
+        )
+      } else {
+        return (
+          <div>You must be logged in to view/edit profile</div>
+        )
+      }
+    }
 }
 
 export default Profile;
