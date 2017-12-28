@@ -3,6 +3,7 @@ import LoginForm from "./LoginForm";
 import {FormBtn} from "../Form";
 import axios from "axios";
 import API from "../../utils/API"
+import  { Redirect } from 'react-router-dom'
 
 class ProfileBox extends Component {
     constructor(props) {
@@ -70,11 +71,11 @@ class ProfileBox extends Component {
     	let message;
 
         if (this.state.user) {
-        	message = <li>Logged in as: {this.state.user.email}</li>
-            form = <li><FormBtn onClick={this.logOut}>Log Out</FormBtn></li>
+        	message = <div>Logged in as: {this.state.user.email}</div>
+            form = <FormBtn onClick={this.logOut}>Log Out</FormBtn>
         } else {
-        	message = <li>{this.state.message}</li>
-            form = <li><LoginForm logIn={this.logIn}/></li>
+        	message = <div>{this.state.message}</div>
+            form = <LoginForm logIn={this.logIn}/>
         }
 
         return [message, form]

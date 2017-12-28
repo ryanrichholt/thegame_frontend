@@ -21,28 +21,6 @@ class LoginForm extends Component {
         this.props.logIn(this.state.email, this.state.password)
     }
 
-  //   handleLoginSubmit = (event) => {
-  //   	event.preventDefault();
-  //   	console.log("Logging in...");
-   
-  //   	axios({
-		// 	method: 'post',
-		// 	url: '/auth/login',
-		// 	data: this.state,
-		// })
-	 //  	.then( (response) => {
-  //           console.log(response)
-  //           if(response.data.success){
-  //               this.props.doneLogin()
-  //           } else {
-  //               this.props.loginFail(response.data.message)
-  //           }
-	 //  	})
-  // 		.catch(function (error) {
-		//     console.log(error);
-	 //  	});
-  //   }
-
     render() { return (
 		<div className="form-inline">
             <div>{this.props.message}</div>

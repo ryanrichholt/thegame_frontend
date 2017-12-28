@@ -24,23 +24,11 @@ export default {
   getProfile: () => {
     console.log('Requesting user profile...')
     return axios.get("/api/profile")
-    // axios({
-    //   method: 'get',
-    //   url: '/api/profile',
-    // })
-    //   .then( response => {
-    //         if (response.data.success){
-    //           console.log('getProfile success:', response)
-    //           comp.setState({ user: response.data.user })
-    //         } else {
-    //           console.log('getProfile fail:', response)
-    //           comp.setState({ user: null })
-    //         }
-    //   })
-    //   .catch( error => {
-    //     console.log('getProfile error');
-    //     comp.setState({ user: null })
-    //   });
+  },
+
+  register: (formData) => {
+    console.log('Sending registration')
+    return axios.post("/auth/register", formData)
   }
 
 };

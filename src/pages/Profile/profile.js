@@ -7,11 +7,13 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Panel from "../../components/ProfPanel";
+import ProfileBox from "../../components/UserAuth/ProfileBox"
+import RegisterForm from "../../components/UserAuth/RegisterForm"
 import './profile.css';
+import  { Redirect } from 'react-router-dom'
 
 class Profile extends Component {
     state = {
-      banana: 'pajama',
       user: null
     };
 
@@ -25,23 +27,35 @@ class Profile extends Component {
             if (response.data.success){
                 this.setState({ user: response.data.user })
             } else {
-                this.setState({ user: null })
+                return <Redirect to='/login'/>
             }
           })
           .catch( error => {
               console.log('Error getting profile: ', error)
+              return <Redirect to='/login'/>
           })
     }
 
+// This page should show the profile and allow for edits
     render() { 
       const user = this.state.user
+
       if (user) {
         return (
-          <div>Profile for { user.email }</div>
+          <Container>
+            <div>Profile for { user.email }</div>
+            <div>Ship name: {user.shipName}</div>
+            <ProfileBox/>
+          </Container>
         )
       } else {
         return (
-          <div>You must be logged in to view/edit profile</div>
+          <Container>
+            <div>You must be logged in to view/edit profile</div>
+            <ProfileBox/>
+            <div> Register: </div>
+            <RegisterForm/>
+          </Container>
         )
       }
     }
